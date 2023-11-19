@@ -28,7 +28,13 @@ public class View {
     }
 
 
-    // printResult()
+    public void printResult(boolean isRestrictRoad) {
+        if (isRestrictRoad) {
+            System.out.println("Restrict :(");
+        } else {
+            System.out.println("Allowed to Road :)!");
+        }
+    }
     
     // Function for read user input
     private String readString(String message){
