@@ -10,14 +10,20 @@ public class CleanedData {
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
     private static final SimpleDateFormat HOUR_FORMAT = new SimpleDateFormat("HH:mm");
+    int digitPlate;
+    int numberDay;
     Date formatedHour;
 
     // Cleaning involves validate and format the data
     public boolean clean(String userPlate, String userDate, String userHour) {
-        if (!isValidData(userPlate, userDate, userHour)) {
-            return false;
-        }
+        if (!isValidData(userPlate, userDate, userHour)) return false;
+        digitPlate = formatPlate(userPlate);
+
         return true;
+    }
+
+    public int formatPlate(String userPlate) {
+        return 0;
     }
 
     private boolean isValidData(String userPlate, String userDate, String userHour) {

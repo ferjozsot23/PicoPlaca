@@ -36,4 +36,11 @@ class CleanedDataTest {
     void isValidHourInvalid() {
         assertFalse(cleanedData.isValidHour("19H00"));
     }
+    @Test
+    public void testFormatPlate() {
+        String testPlate = "ABC-1234";
+        int result = cleanedData.formatPlate(testPlate);
+
+        assertEquals(4, result);
+    }
 }
