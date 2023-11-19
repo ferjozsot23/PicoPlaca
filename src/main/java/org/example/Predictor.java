@@ -17,8 +17,18 @@ public class Predictor {
 
         calculateRestrictedRoad();
     }
-    // getCleanedData
-    // calculateRestrictRoad
-    //-->isValidDay and --> isValidHour
-    // sendResult()
+    private void calculateRestrictedRoad() {
+        isRestrictRoad = isRestrictedDay(digitPlate, numberDay) && isRestrictedHour(hour);
+        sendResult();
+    }
+    public boolean isRestrictedDay(int digitPlate, int numberDay) {
+        return false;
+    }
+
+    public boolean isRestrictedHour(Date hour) {
+        return false;
+    }
+
+
+
 }
