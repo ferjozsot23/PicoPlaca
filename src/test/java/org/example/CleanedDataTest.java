@@ -48,7 +48,7 @@ class CleanedDataTest {
         assertEquals(4, result);
     }
     @Test
-    void formatDate()  {
+    void formatDate() throws ParseException {
         CleanedData cleanedData = new CleanedData();
         String testDate = "10-30-2023";
         int dayNumber = cleanedData.formatDate(testDate);
@@ -57,7 +57,7 @@ class CleanedDataTest {
     }
 
     @Test
-    void formatDateInvalid() {
+    void formatDateInvalid() throws ParseException {
         String testDate = "Hello";
         ParseException exception = null;
         cleanedData.formatDate(testDate);
