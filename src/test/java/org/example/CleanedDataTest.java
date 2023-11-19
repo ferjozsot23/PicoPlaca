@@ -74,7 +74,7 @@ class CleanedDataTest {
     }
 
     @Test
-    void formatHour() {
+    void formatHour() throws ParseException {
         String testHour = "15:30";
 
         Date result = cleanedData.formatHour(testHour);
@@ -85,7 +85,7 @@ class CleanedDataTest {
     }
 
     @Test
-    public void testFormatHourInvalid() {
+    public void testFormatHourInvalid() throws ParseException {
         String invalidHour = "70:70";
         ParseException exception = null;
         cleanedData.formatHour(invalidHour);

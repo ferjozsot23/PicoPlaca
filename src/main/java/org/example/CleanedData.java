@@ -29,8 +29,9 @@ public class CleanedData {
         return true;
     }
 
-    Date formatHour(String userHour) {
-        return null;
+    Date formatHour(String userHour) throws ParseException {
+        HOUR_FORMAT.setLenient(false);
+        return HOUR_FORMAT.parse(userHour);
     }
 
     public int formatDate(String userDate) throws ParseException {
