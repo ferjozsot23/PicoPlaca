@@ -3,6 +3,10 @@ package org.example;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CleanedDataTest {
@@ -42,5 +46,30 @@ class CleanedDataTest {
         int result = cleanedData.formatPlate(testPlate);
 
         assertEquals(4, result);
+    }
+    @Test
+    void formatDate()  {
+        CleanedData cleanedData = new CleanedData();
+        String testDate = "10-30-2023";
+        int dayNumber = cleanedData.formatDate(testDate);
+
+        assertEquals(1, dayNumber);
+    }
+
+    @Test
+    void formatDateInvalid() {
+        String testDate = "Hello";
+        ParseException exception = null;
+        cleanedData.formatDate(testDate);
+        assertNotNull(exception);
+
+    }
+    @Test
+    void getDay() throws ParseException {
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
+        Date sampleDate = DATE_FORMAT.parse("11-18-2023");
+        int numberDay = cleanedData.getDay(sampleDate);
+
+        assertEquals(6, numberDay);
     }
 }

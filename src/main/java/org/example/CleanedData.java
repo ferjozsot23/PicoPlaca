@@ -2,6 +2,7 @@ package org.example;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,8 +19,25 @@ public class CleanedData {
     public boolean clean(String userPlate, String userDate, String userHour) {
         if (!isValidData(userPlate, userDate, userHour)) return false;
         digitPlate = formatPlate(userPlate);
+        try {
+            numberDay = formatDate(userDate);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
 
         return true;
+    }
+
+    public int formatDate(String userDate) throws ParseException {
+        Date formatedDate = DATE_FORMAT.parse(userDate);
+        return getDay(formatedDate);
+    }
+
+    public int getDay(Date formatedDate) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(formatedDate);
+        int numberDay = calendar.get(Calendar.DAY_OF_WEEK);
+        return (numberDay + 5) % 7 + 1;
     }
 
     public int formatPlate(String userPlate) {
