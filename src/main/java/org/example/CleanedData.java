@@ -2,11 +2,15 @@ package org.example;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CleanedData {
+
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
+    private static final SimpleDateFormat HOUR_FORMAT = new SimpleDateFormat("HH:mm");
+    Date formatedHour;
 
     // Cleaning involves validate and format the data
     public boolean clean(String userPlate, String userDate, String userHour) {
@@ -21,7 +25,14 @@ public class CleanedData {
     }
 
     public boolean isValidHour(String userHour) {
-        return true;
+        HOUR_FORMAT.setLenient(false);
+        if (userHour == null) return false;
+        try {
+            HOUR_FORMAT.parse(userHour);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
     }
 
     public boolean isValidDate(String userDate) {
