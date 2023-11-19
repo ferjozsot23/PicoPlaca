@@ -25,4 +25,15 @@ class CleanedDataTest {
     void isValidDateInvalid() {
         assertFalse(cleanedData.isValidDate(""));
     }
+
+    @Test
+    void isValidHour() {
+        assertTrue(cleanedData.isValidHour("19:00"));
+        assertTrue(cleanedData.isValidHour("9:00"));
+    }
+
+    @Test
+    void isValidHourInvalid() {
+        assertFalse(cleanedData.isValidHour("19H00"));
+    }
 }

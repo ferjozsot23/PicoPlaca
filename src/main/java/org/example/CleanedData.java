@@ -17,7 +17,11 @@ public class CleanedData {
     }
 
     private boolean isValidData(String userPlate, String userDate, String userHour) {
-        return isValidPlate(userPlate) && isValidDate(userDate);
+        return isValidPlate(userPlate) && isValidDate(userDate) && isValidHour(userHour);
+    }
+
+    public boolean isValidHour(String userHour) {
+        return true;
     }
 
     public boolean isValidDate(String userDate) {
