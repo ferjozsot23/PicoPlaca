@@ -12,6 +12,7 @@ public class Predictor {
     private View view;
     public Predictor(View view) {this.view = view;}
 
+    // Get the cleaned data
     public void getCleanedData(CleanedData cleaner) {
         digitPlate = cleaner.digitPlate;
         numberDay = cleaner.numberDay;
@@ -19,6 +20,8 @@ public class Predictor {
 
         calculateRestrictedRoad();
     }
+
+    // Calculate restrict road based on day and hour
     private void calculateRestrictedRoad() {
         isRestrictRoad = isRestrictedDay(digitPlate, numberDay) && isRestrictedHour(hour);
         sendResult();
@@ -26,8 +29,12 @@ public class Predictor {
     private void sendResult() {
         view.printResult(isRestrictRoad);
     }
+
     public boolean isRestrictedDay(int digitPlate, int day) {
+        // If the digit plate is 0 and day 5 its gonna be restricted
         if (day == 5 && digitPlate == 0) return true;
+        // If the day multiplied by two, or the day multiplied by two minus 1 is equal to the last digit of the license,
+        // then the road will be restricted.
         if (day * 2 == digitPlate || day * 2 - 1 == digitPlate) return true;
         return false;
     }
@@ -46,11 +53,12 @@ public class Predictor {
         } catch (ParseException e) {
             return  false;
         }
-
+        // The road will be restricted if it is within the hour intervals
         return isInInterval(hour, startInterval1, endInterval1) || isInInterval(hour, startInterval2, endInterval2);
     }
 
     private boolean isInInterval(Date hour, Date start, Date end) {
+        // Checks if a time is within the range or if it is equal to the lower or upper limit
         return ((hour.equals(start) || (hour.after(start)) && (hour.equals(end) || hour.before(end))));
     }
 
