@@ -23,7 +23,8 @@ public class CleanedData {
     }
 
     public int formatPlate(String userPlate) {
-        return 0;
+        char charDigitPlate = userPlate.charAt(userPlate.length() - 1);
+        return Character.getNumericValue(charDigitPlate);
     }
 
     private boolean isValidData(String userPlate, String userDate, String userHour) {
