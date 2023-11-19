@@ -1,5 +1,7 @@
 package org.example;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Predictor {
@@ -28,9 +30,25 @@ public class Predictor {
     }
 
     public boolean isRestrictedHour(Date hour) {
-        return false;
+        Date startInterval1, endInterval1, startInterval2, endInterval2;
+
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+
+        try {
+            startInterval1 = timeFormat.parse("06:00");
+            endInterval1 = timeFormat.parse("09:30");
+            startInterval2 = timeFormat.parse("16:00");
+            endInterval2 = timeFormat.parse("20:00");
+
+        } catch (ParseException e) {
+            return  false;
+        }
+
+        return isInInterval(hour, startInterval1, endInterval1) || isInInterval(hour, startInterval2, endInterval2);
     }
 
-
+    private boolean isInInterval(Date hour, Date start, Date end) {
+        return ((hour.equals(start) || (hour.after(start)) && (hour.equals(end) || hour.before(end))));
+    }
 
 }
