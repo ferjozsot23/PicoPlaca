@@ -24,6 +24,7 @@ public class View {
     }
 
     private void sendCleanedData(CleanedData cleaner) {
+        predictor.getCleanedData(cleaner);
     }
 
 

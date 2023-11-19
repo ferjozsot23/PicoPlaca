@@ -17,13 +17,16 @@ public class CleanedData {
 
     // Cleaning involves validate and format the data
     public boolean clean(String userPlate, String userDate, String userHour) {
+        // Validate the user data
         if (!isValidData(userPlate, userDate, userHour)) return false;
+
+        // Format the validated user data
         digitPlate = formatPlate(userPlate);
         try {
             numberDay = formatDate(userDate);
             formatedHour = formatHour(userHour);
         } catch (ParseException e) {
-            throw new RuntimeException(e);
+            return false;
         }
 
         return true;
@@ -37,13 +40,6 @@ public class CleanedData {
     public int formatDate(String userDate) throws ParseException {
         Date formatedDate = DATE_FORMAT.parse(userDate);
         return getDay(formatedDate);
-    }
-
-    public int getDay(Date formatedDate) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(formatedDate);
-        int numberDay = calendar.get(Calendar.DAY_OF_WEEK);
-        return (numberDay + 5) % 7 + 1;
     }
 
     public int formatPlate(String userPlate) {
@@ -86,6 +82,13 @@ public class CleanedData {
         Matcher matcher = regex.matcher(userPlate);
 
         return matcher.matches();
+    }
+
+    public int getDay(Date formatedDate) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(formatedDate);
+        int numberDay = calendar.get(Calendar.DAY_OF_WEEK);
+        return (numberDay + 5) % 7 + 1;
     }
 
 
