@@ -72,4 +72,23 @@ class CleanedDataTest {
 
         assertEquals(6, numberDay);
     }
+
+    @Test
+    void formatHour() {
+        String testHour = "15:30";
+
+        Date result = cleanedData.formatHour(testHour);
+        SimpleDateFormat HOUR_FORMAT = new SimpleDateFormat("HH:mm");
+        String formattedResult = HOUR_FORMAT.format(result);
+
+        assertEquals(testHour, formattedResult);
+    }
+
+    @Test
+    public void testFormatHourInvalid() {
+        String invalidHour = "70:70";
+        ParseException exception = null;
+        cleanedData.formatHour(invalidHour);
+        assertNotNull(exception);
+    }
 }

@@ -21,11 +21,16 @@ public class CleanedData {
         digitPlate = formatPlate(userPlate);
         try {
             numberDay = formatDate(userDate);
+            formatedHour = formatHour(userHour);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
 
         return true;
+    }
+
+    Date formatHour(String userHour) {
+        return null;
     }
 
     public int formatDate(String userDate) throws ParseException {
