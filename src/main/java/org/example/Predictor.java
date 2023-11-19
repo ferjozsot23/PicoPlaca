@@ -21,7 +21,9 @@ public class Predictor {
         isRestrictRoad = isRestrictedDay(digitPlate, numberDay) && isRestrictedHour(hour);
         sendResult();
     }
-    public boolean isRestrictedDay(int digitPlate, int numberDay) {
+    public boolean isRestrictedDay(int digitPlate, int day) {
+        if (day == 5 && digitPlate == 0) return true;
+        if (day * 2 == digitPlate || day * 2 - 1 == digitPlate) return true;
         return false;
     }
 
