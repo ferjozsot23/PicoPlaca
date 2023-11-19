@@ -3,9 +3,10 @@ package org.example;
 
 import java.util.Scanner;
 
+// This class is in charge of interaction with the user
 public class View {
     Scanner scanner = new Scanner(System.in);
-    CleanedData cleaner = new CleanedData();
+    DataValidator cleaner = new DataValidator();
     Predictor predictor = new Predictor(this);
     public void getUserData() {
         // Receive user data until the data is cleaned
@@ -23,7 +24,7 @@ public class View {
         sendCleanedData(cleaner);
     }
 
-    private void sendCleanedData(CleanedData cleaner) {
+    private void sendCleanedData(DataValidator cleaner) {
         predictor.getCleanedData(cleaner);
     }
 

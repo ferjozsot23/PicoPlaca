@@ -9,49 +9,49 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CleanedDataTest {
-    private CleanedData cleanedData;
+class DataValidatorTest {
+    private DataValidator dataValidator;
     @BeforeEach
     public void setUp() {
-        cleanedData = new CleanedData();
+        dataValidator = new DataValidator();
     }
     @org.junit.jupiter.api.Test
     void isValidPlate() {
-        assertTrue(cleanedData.isValidPlate("PBU-1234"));
-        assertTrue(cleanedData.isValidPlate("PBU-123"));
+        assertTrue(dataValidator.isValidPlate("PBU-1234"));
+        assertTrue(dataValidator.isValidPlate("PBU-123"));
     }
 
     @Test
     void isValidDate() {
-        assertTrue(cleanedData.isValidDate("12-12-2024"));
+        assertTrue(dataValidator.isValidDate("12-12-2024"));
     }
     @Test
     void isValidDateInvalid() {
-        assertFalse(cleanedData.isValidDate(""));
+        assertFalse(dataValidator.isValidDate(""));
     }
 
     @Test
     void isValidHour() {
-        assertTrue(cleanedData.isValidHour("19:00"));
-        assertTrue(cleanedData.isValidHour("9:00"));
+        assertTrue(dataValidator.isValidHour("19:00"));
+        assertTrue(dataValidator.isValidHour("9:00"));
     }
 
     @Test
     void isValidHourInvalid() {
-        assertFalse(cleanedData.isValidHour("19H00"));
+        assertFalse(dataValidator.isValidHour("19H00"));
     }
     @Test
     public void testFormatPlate() {
         String testPlate = "ABC-1234";
-        int result = cleanedData.formatPlate(testPlate);
+        int result = dataValidator.formatPlate(testPlate);
 
         assertEquals(4, result);
     }
     @Test
     void formatDate() throws ParseException {
-        CleanedData cleanedData = new CleanedData();
+        DataValidator dataValidator = new DataValidator();
         String testDate = "10-30-2023";
-        int dayNumber = cleanedData.formatDate(testDate);
+        int dayNumber = dataValidator.formatDate(testDate);
 
         assertEquals(1, dayNumber);
     }
@@ -60,7 +60,7 @@ class CleanedDataTest {
     void formatDateInvalid() throws ParseException {
         String testDate = "Hello";
         ParseException exception = null;
-        cleanedData.formatDate(testDate);
+        dataValidator.formatDate(testDate);
         assertNotNull(exception);
 
     }
@@ -68,7 +68,7 @@ class CleanedDataTest {
     void getDay() throws ParseException {
         SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
         Date sampleDate = DATE_FORMAT.parse("11-18-2023");
-        int numberDay = cleanedData.getDay(sampleDate);
+        int numberDay = dataValidator.getDay(sampleDate);
 
         assertEquals(6, numberDay);
     }
@@ -77,7 +77,7 @@ class CleanedDataTest {
     void formatHour() throws ParseException {
         String testHour = "15:30";
 
-        Date result = cleanedData.formatHour(testHour);
+        Date result = dataValidator.formatHour(testHour);
         SimpleDateFormat HOUR_FORMAT = new SimpleDateFormat("HH:mm");
         String formattedResult = HOUR_FORMAT.format(result);
 
@@ -88,7 +88,7 @@ class CleanedDataTest {
     public void testFormatHourInvalid() throws ParseException {
         String invalidHour = "70:70";
         ParseException exception = null;
-        cleanedData.formatHour(invalidHour);
+        dataValidator.formatHour(invalidHour);
         assertNotNull(exception);
     }
 }

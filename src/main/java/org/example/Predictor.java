@@ -10,10 +10,11 @@ public class Predictor {
     Date hour;
     boolean isRestrictRoad;
     private View view;
+    // This class determine if a road is restricted based on licence plate, day and hour
     public Predictor(View view) {this.view = view;}
 
     // Get the cleaned data
-    public void getCleanedData(CleanedData cleaner) {
+    public void getCleanedData(DataValidator cleaner) {
         digitPlate = cleaner.digitPlate;
         numberDay = cleaner.numberDay;
         hour = cleaner.formatedHour;

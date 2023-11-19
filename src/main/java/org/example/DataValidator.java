@@ -8,7 +8,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class CleanedData {
+// This class validate the user data
+public class DataValidator {
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
     private static final SimpleDateFormat HOUR_FORMAT = new SimpleDateFormat("HH:mm");
