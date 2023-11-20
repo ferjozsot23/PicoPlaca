@@ -88,12 +88,12 @@ class DataValidatorTest {
 
     @Test
     void formatHour() throws ParseException {
-        String testHour = "15:30";
+        String hour = "15:30";
+        Date testHour = Util.HOUR_FORMAT.parse(hour);
 
-        Date result = dataValidator.formatHour(testHour);
-        String formattedResult = Util.HOUR_FORMAT.format(result);
+        dataValidator.formatHour(hour);
 
-        assertEquals(testHour, formattedResult);
+        assertEquals(testHour, dataValidator.formatedHour);
     }
 
     @Test
@@ -103,6 +103,6 @@ class DataValidatorTest {
         dataValidator.formatHour(invalidHour);
         assertNotNull(exception);
     }
-    */
+
 
 }
