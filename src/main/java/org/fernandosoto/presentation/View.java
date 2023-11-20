@@ -32,9 +32,9 @@ public class View {
 
     public void printResult(boolean isRestrictRoad) {
         if (isRestrictRoad) {
-            System.out.println("Restrict :(");
+            System.out.println("Restrict to Road");
         } else {
-            System.out.println("Allowed to Road :)!");
+            System.out.println("Allowed to Road");
         }
     }
 
