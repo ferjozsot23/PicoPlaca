@@ -39,10 +39,10 @@ public class Predictor {
     public boolean isRestrictedHour(Date hour) {
         Date startInterval1, endInterval1, startInterval2, endInterval2;
         try {
-            startInterval1 = Util.HOUR_FORMAT.parse("06:00");
+            startInterval1 = Util.HOUR_FORMAT.parse("07:00");
             endInterval1 = Util.HOUR_FORMAT.parse("09:30");
             startInterval2 = Util.HOUR_FORMAT.parse("16:00");
-            endInterval2 = Util.HOUR_FORMAT.parse("20:00");
+            endInterval2 = Util.HOUR_FORMAT.parse("19:30");
 
         } catch (ParseException e) {
             return false;
