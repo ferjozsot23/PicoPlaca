@@ -20,21 +20,21 @@ class PredictorTest {
     }
 
     @Test
-    void test_isRestrictedDay_Restricted() {
+    void test_isRestrictedDay_withRestriction_shouldReturnTrue() {
         int digitPlate = 6;
         int day = 3;
         assertTrue(predictor.isRestrictedDay(digitPlate, day));
     }
 
     @Test
-    void test_isRestrictedDay_NoRestricted() {
+    void test_isRestrictedDay_withNoRestriction_shouldReturnFalse() {
         int digitPlate = 6;
         int day = 4;
         assertFalse(predictor.isRestrictedDay(digitPlate, day));
     }
 
     @Test
-    void test_isRestrictedHour_Restricted() throws ParseException {
+    void test_isRestrictedHour_withRestriction_shouldReturnTrue() throws ParseException {
         // Hour limits of interval one
         Date hour_lim_inf1 = Util.HOUR_FORMAT.parse("7:00");
         Date hour_lim_sup1 = Util.HOUR_FORMAT.parse("9:30");
@@ -49,7 +49,7 @@ class PredictorTest {
     }
 
     @Test
-    void test_isRestrictedHour_NoRestricted() throws ParseException {
+    void test_isRestrictedHour_withNoRestriction_shouldReturnFalse() throws ParseException {
         // Hour limits of interval one
         Date hour_lim_inf1 = Util.HOUR_FORMAT.parse("06:59");
         Date hour_lim_sup1 = Util.HOUR_FORMAT.parse("9:31");

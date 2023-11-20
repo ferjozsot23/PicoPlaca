@@ -19,45 +19,45 @@ class DataValidatorTest {
     }
 
     @org.junit.jupiter.api.Test
-    void test_isValidPlate_withValidPlate() {
+    void test_isValidPlate_withValidPlate_shouldReturnFalse() {
         assertTrue(dataValidator.isValidPlate("PBU-1234"));
         assertTrue(dataValidator.isValidPlate("PBU-123"));
     }
 
     @Test
-    void test_isValidDate_withValidDate() throws ParseException {
+    void test_isValidDate_withValidDate_shouldReturnTrue() throws ParseException {
         assertTrue(dataValidator.isValidDate("12-12-2024"));
     }
 
     @Test
-    void test_isValidDate_withInvalidDate() throws ParseException {
+    void test_isValidDate_withInvalidDate_shouldReturnFalse() throws ParseException {
         assertFalse(dataValidator.isValidDate(""));
         assertFalse(dataValidator.isValidDate(null));
         assertFalse(dataValidator.isValidDate(""));
     }
 
     @Test
-    void test_isValidHour_withValidHour() throws ParseException {
+    void test_isValidHour_withValidHour_shouldReturnTrue() throws ParseException {
         assertTrue(dataValidator.isValidHour("19:00"));
         assertTrue(dataValidator.isValidHour("9:00"));
     }
 
     @Test
-    void test_isValidHour_withInvalidHour() throws ParseException {
+    void test_isValidHour_withInvalidHour_shouldReturnFalse() throws ParseException {
         assertFalse(dataValidator.isValidHour("19H00"));
         assertFalse(dataValidator.isValidHour(null));
         assertFalse(dataValidator.isValidHour("Hola"));
     }
 
     @Test
-    void test_formatPlate_withValidPlate() {
+    void test_formatPlate_withValidPlate_shouldSetLastDigitOfPlate() {
         String testPlate = "ABC-1234";
         dataValidator.formatPlate(testPlate);
         assertEquals(4, dataValidator.digitPlate);
     }
 
     @Test
-    void test_formatDate_withValidDate() throws ParseException {
+    void test_formatDate_withValidDate_shouldSetDayofWeek() throws ParseException {
         DataValidator dataValidator = new DataValidator();
         String testDate = "10-30-2023";
         dataValidator.formatDate(testDate);
@@ -65,7 +65,7 @@ class DataValidatorTest {
     }
 
     @Test
-    void test_formatDate_withInvalidDate() throws ParseException {
+    void test_formatDate_withInvalidDate_shouldThrowParseException() throws ParseException {
         String testDate = "Hello";
         ParseException exception = null;
         dataValidator.formatDate(testDate);
@@ -73,14 +73,14 @@ class DataValidatorTest {
     }
 
     @Test
-    void test_getDay() throws ParseException {
+    void test_getDay_shouldReturnCorrectDayOfWeek() throws ParseException {
         Date sampleDate = Util.DATE_FORMAT.parse("11-18-2023");
         int numberDay = dataValidator.getDay(sampleDate);
         assertEquals(6, numberDay);
     }
 
     @Test
-    void test_formatHour_withValidHour() throws ParseException {
+    void test_formatHour_withValidHour_shouldSetFormattedHour() throws ParseException {
         String hour = "15:30";
         Date testHour = Util.HOUR_FORMAT.parse(hour);
         dataValidator.formatHour(hour);
@@ -88,7 +88,7 @@ class DataValidatorTest {
     }
 
     @Test
-    public void test_formatHour_withInvalidHour() throws ParseException {
+    public void test_formatHour_withInvalidHour_shouldThrowParseException() throws ParseException {
         String invalidHour = "70:70";
         ParseException exception = null;
         dataValidator.formatHour(invalidHour);
