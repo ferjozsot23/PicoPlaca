@@ -26,25 +26,25 @@ class DataValidatorTest {
     }
 
     @Test
-    void isValidDate() {
+    void isValidDate() throws ParseException {
         assertTrue(dataValidator.isValidDate("12-12-2024"));
     }
 
     @Test
-    void isValidDateInvalid() {
+    void isValidDateInvalid() throws ParseException {
         assertFalse(dataValidator.isValidDate(""));
         assertFalse(dataValidator.isValidDate(null));
         assertFalse(dataValidator.isValidDate(""));
     }
 
     @Test
-    void isValidHour() {
+    void isValidHour() throws ParseException {
         assertTrue(dataValidator.isValidHour("19:00"));
         assertTrue(dataValidator.isValidHour("9:00"));
     }
 
     @Test
-    void isValidHourInvalid() {
+    void isValidHourInvalid() throws ParseException {
         assertFalse(dataValidator.isValidHour("19H00"));
         assertFalse(dataValidator.isValidHour(null));
         assertFalse(dataValidator.isValidHour("Hola"));

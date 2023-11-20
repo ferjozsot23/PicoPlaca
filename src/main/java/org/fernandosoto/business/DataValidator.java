@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.fernandosoto.utilitary.Util;
 
 
@@ -15,43 +16,47 @@ public class DataValidator {
     public Date formatedHour;
 
     public boolean clean(String userPlate, String userDate, String userHour) {
-        if (!isValidData(userPlate, userDate, userHour)) return false;
-
-
-        digitPlate = formatPlate(userPlate);
-        try {
-            numberDay = formatDate(userDate);
-            formatedHour = formatHour(userHour);
-        } catch (ParseException e) {
-            return false;
+        if (isValidData(userPlate, userDate, userHour)) {
+            formatData(userPlate, userDate, userHour);
+            return true;
         }
-        return true;
+        return false;
+    }
+
+    private void formatData(String userPlate, String userDate, String userHour) {
+        try {
+            formatPlate(userPlate);
+            formatDate(userDate);
+            formatHour(userHour);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     private boolean isValidData(String userPlate, String userDate, String userHour) {
-        return isValidPlate(userPlate) && isValidDate(userDate) && isValidHour(userHour);
+        try {
+            return isValidPlate(userPlate) && isValidDate(userDate) && isValidHour(userHour);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // Validate user hour
-    public boolean isValidHour(String userHour) {
+    public boolean isValidHour(String userHour) throws ParseException {
         if (userHour == null) return false;
-        try {
-            Util.HOUR_FORMAT.parse(userHour);
-            return true;
-        } catch (ParseException e) {
-            return false;
-        }
+        Util.HOUR_FORMAT.parse(userHour);
+        return true;
     }
+
     // Validate user date
-    public boolean isValidDate(String userDate) {
+    public boolean isValidDate(String userDate) throws ParseException {
         if (userDate == null) return false;
-        try {
-            Util.DATE_FORMAT.parse(userDate);
-            return true;
-        } catch (ParseException e) {
-            return false;
-        }
+        Util.DATE_FORMAT.parse(userDate);
+        return true;
+
     }
+
     // Validate user plate
     public boolean isValidPlate(String userPlate) {
         if (userPlate == null) return false;
@@ -63,18 +68,18 @@ public class DataValidator {
         return matcher.matches();
     }
 
-    public Date formatHour(String userHour) throws ParseException {
-        return Util.HOUR_FORMAT.parse(userHour);
+    public void formatHour(String userHour) throws ParseException {
+        formatedHour = Util.HOUR_FORMAT.parse(userHour);
     }
 
-    public int formatDate(String userDate) throws ParseException {
+    public void formatDate(String userDate) throws ParseException {
         Date formatedDate = Util.DATE_FORMAT.parse(userDate);
-        return getDay(formatedDate);
+        numberDay = getDay(formatedDate);
     }
 
-    public int formatPlate(String userPlate) {
+    public void formatPlate(String userPlate) {
         char charDigitPlate = userPlate.charAt(userPlate.length() - 1);
-        return Character.getNumericValue(charDigitPlate);
+        digitPlate = Character.getNumericValue(charDigitPlate);
     }
 
     public int getDay(Date formatedDate) {
