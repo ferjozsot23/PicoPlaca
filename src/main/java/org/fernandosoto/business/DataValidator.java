@@ -42,7 +42,6 @@ public class DataValidator {
         }
     }
 
-    // Validate user hour
     public boolean isValidHour(String userHour) throws ParseException {
         if (userHour == null) return false;
         Util.HOUR_FORMAT.parse(userHour);

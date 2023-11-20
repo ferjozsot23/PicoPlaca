@@ -53,10 +53,11 @@ class DataValidatorTest {
     @Test
     public void testFormatPlate() {
         String testPlate = "ABC-1234";
-        int result = dataValidator.formatPlate(testPlate);
+        dataValidator.formatPlate(testPlate);
 
-        assertEquals(4, result);
+        assertEquals(4, dataValidator.digitPlate);
     }
+
 
     @Test
     void formatDate() throws ParseException {
@@ -66,6 +67,7 @@ class DataValidatorTest {
 
         assertEquals(1, dayNumber);
     }
+
 
     @Test
     void formatDateInvalid() throws ParseException {
@@ -101,4 +103,6 @@ class DataValidatorTest {
         dataValidator.formatHour(invalidHour);
         assertNotNull(exception);
     }
+    */
+
 }
