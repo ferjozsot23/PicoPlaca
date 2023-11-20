@@ -62,8 +62,8 @@ Additionally, here are some test cases designed to validate the behavior.
 
 |**License plate** | **Date**  | **Hour** | **Result** |
 | ----------------- | ----------|----------------------|------------------------ |
-| PBU-123 |  11-18-2002 | 19:00 | "Allowed to Road :)!" |
-| PBU-1231 | 11-20-2022 | 6:00 | "Restrict :(" |
+| PBU-123 |  11-18-2002 | 19:00 | "Allowed to Road" |
+| PBU-1231 | 11-20-2022 | 7:00 | "Restrict to Road" |
 | !HOLA-123! | 10-10-1999 | 9:00 | Enter the data again |
 | PBU-1233 | 01-01-2001 | "Sí" | Enter the data again |
 
