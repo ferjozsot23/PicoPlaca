@@ -12,7 +12,10 @@ public class Predictor {
     Date hour;
     boolean isRestrictRoad;
     private View view;
-    public Predictor(View view) {this.view = view;}
+
+    public Predictor(View view) {
+        this.view = view;
+    }
 
     // Get the cleaned data
     public void getCleanedData(DataValidator cleaner) {
@@ -42,13 +45,15 @@ public class Predictor {
             endInterval2 = Util.HOUR_FORMAT.parse("20:00");
 
         } catch (ParseException e) {
-            return  false;
+            return false;
         }
         return isInInterval(hour, startInterval1, endInterval1) || isInInterval(hour, startInterval2, endInterval2);
     }
+
     private void sendResult() {
         view.printResult(isRestrictRoad);
     }
+
     private boolean isInInterval(Date hour, Date start, Date end) {
         // Checks if an hour is within the range or if it is equal to the lower or upper limit
         return ((hour.equals(start) || (hour.after(start)) && (hour.equals(end) || hour.before(end))));

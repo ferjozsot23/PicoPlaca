@@ -11,6 +11,7 @@ public class View {
     Scanner scanner = new Scanner(System.in);
     DataValidator cleaner = new DataValidator();
     Predictor predictor = new Predictor(this);
+
     public void getUserData() {
         // Receive user data until the data is cleaned
         String userPlate;
@@ -37,7 +38,7 @@ public class View {
         }
     }
 
-    private String readUserData(String message){
+    private String readUserData(String message) {
         System.out.print(message);
         return scanner.next();
     }
