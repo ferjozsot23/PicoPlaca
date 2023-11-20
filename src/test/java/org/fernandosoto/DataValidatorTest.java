@@ -1,6 +1,7 @@
 package org.fernandosoto;
 
 import org.fernandosoto.business.DataValidator;
+import org.fernandosoto.utilitary.Util;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -77,8 +78,7 @@ class DataValidatorTest {
 
     @Test
     void getDay() throws ParseException {
-        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
-        Date sampleDate = DATE_FORMAT.parse("11-18-2023");
+        Date sampleDate = Util.DATE_FORMAT.parse("11-18-2023");
         int numberDay = dataValidator.getDay(sampleDate);
 
         assertEquals(6, numberDay);
@@ -89,8 +89,7 @@ class DataValidatorTest {
         String testHour = "15:30";
 
         Date result = dataValidator.formatHour(testHour);
-        SimpleDateFormat HOUR_FORMAT = new SimpleDateFormat("HH:mm");
-        String formattedResult = HOUR_FORMAT.format(result);
+        String formattedResult = Util.HOUR_FORMAT.format(result);
 
         assertEquals(testHour, formattedResult);
     }
