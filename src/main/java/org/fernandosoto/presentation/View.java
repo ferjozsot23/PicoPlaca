@@ -1,5 +1,8 @@
-package org.example;
+package org.fernandosoto.presentation;
 
+
+import org.fernandosoto.business.DataValidator;
+import org.fernandosoto.business.Predictor;
 
 import java.util.Scanner;
 

@@ -1,4 +1,6 @@
-package org.example;
+package org.fernandosoto;
+
+import org.fernandosoto.presentation.View;
 
 public class Main {
     public static void main(String[] args) {

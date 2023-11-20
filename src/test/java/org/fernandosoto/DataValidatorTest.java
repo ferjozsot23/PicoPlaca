@@ -1,5 +1,6 @@
-package org.example;
+package org.fernandosoto;
 
+import org.fernandosoto.business.DataValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,10 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DataValidatorTest {
     private DataValidator dataValidator;
+
     @BeforeEach
     public void setUp() {
         dataValidator = new DataValidator();
     }
+
     @org.junit.jupiter.api.Test
     void isValidPlate() {
         assertTrue(dataValidator.isValidPlate("PBU-1234"));
@@ -25,6 +28,7 @@ class DataValidatorTest {
     void isValidDate() {
         assertTrue(dataValidator.isValidDate("12-12-2024"));
     }
+
     @Test
     void isValidDateInvalid() {
         assertFalse(dataValidator.isValidDate(""));
@@ -44,6 +48,7 @@ class DataValidatorTest {
         assertFalse(dataValidator.isValidHour(null));
         assertFalse(dataValidator.isValidHour("Hola"));
     }
+
     @Test
     public void testFormatPlate() {
         String testPlate = "ABC-1234";
@@ -51,6 +56,7 @@ class DataValidatorTest {
 
         assertEquals(4, result);
     }
+
     @Test
     void formatDate() throws ParseException {
         DataValidator dataValidator = new DataValidator();
@@ -68,9 +74,10 @@ class DataValidatorTest {
         assertNotNull(exception);
 
     }
+
     @Test
     void getDay() throws ParseException {
-        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("mm-dd-yyyy");
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
         Date sampleDate = DATE_FORMAT.parse("11-18-2023");
         int numberDay = dataValidator.getDay(sampleDate);
 

@@ -1,4 +1,4 @@
-package org.example;
+package org.fernandosoto.business;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,16 +11,17 @@ import java.util.regex.Pattern;
 // This class validate the user data
 public class DataValidator {
 
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("mm-dd-yyyy");
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
     private static final SimpleDateFormat HOUR_FORMAT = new SimpleDateFormat("HH:mm");
-    int digitPlate;
-    int numberDay;
-    Date formatedHour;
+    public int digitPlate;
+    public int numberDay;
+    public Date formatedHour;
 
     // Cleaning involves validate and format the data
     public boolean clean(String userPlate, String userDate, String userHour) {
         // Validate the user data
         if (!isValidData(userPlate, userDate, userHour)) return false;
+
 
         // Format the validated user data
         digitPlate = formatPlate(userPlate);
@@ -73,24 +74,22 @@ public class DataValidator {
         return matcher.matches();
     }
 
-    // Format an hour in a date form
     public Date formatHour(String userHour) throws ParseException {
         HOUR_FORMAT.setLenient(false);
         return HOUR_FORMAT.parse(userHour);
     }
-    // Format a date extracting the number of week of this day
+
     public int formatDate(String userDate) throws ParseException {
         Date formatedDate = DATE_FORMAT.parse(userDate);
         return getDay(formatedDate);
     }
-    // Format a license plate extracting its last digit
+
     public int formatPlate(String userPlate) {
         char charDigitPlate = userPlate.charAt(userPlate.length() - 1);
         return Character.getNumericValue(charDigitPlate);
     }
 
-    // Get the number of week of a day
-    int getDay(Date formatedDate) {
+    private int getDay(Date formatedDate) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(formatedDate);
         int numberDay = calendar.get(Calendar.DAY_OF_WEEK);

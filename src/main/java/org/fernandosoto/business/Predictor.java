@@ -1,4 +1,6 @@
-package org.example;
+package org.fernandosoto.business;
+
+import org.fernandosoto.presentation.View;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

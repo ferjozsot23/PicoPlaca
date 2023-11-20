@@ -1,5 +1,7 @@
-package org.example;
+package org.fernandosoto;
 
+import org.fernandosoto.business.Predictor;
+import org.fernandosoto.presentation.View;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
