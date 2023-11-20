@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 // This class validate the user data
 public class DataValidator {
 
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("mm-dd-yyyy");
     private static final SimpleDateFormat HOUR_FORMAT = new SimpleDateFormat("HH:mm");
     int digitPlate;
     int numberDay;
@@ -72,6 +72,7 @@ public class DataValidator {
 
         return matcher.matches();
     }
+
     // Format an hour in a date form
     public Date formatHour(String userHour) throws ParseException {
         HOUR_FORMAT.setLenient(false);
@@ -89,7 +90,7 @@ public class DataValidator {
     }
 
     // Get the number of week of a day
-    public int getDay(Date formatedDate) {
+    int getDay(Date formatedDate) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(formatedDate);
         int numberDay = calendar.get(Calendar.DAY_OF_WEEK);

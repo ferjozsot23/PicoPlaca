@@ -28,6 +28,8 @@ class DataValidatorTest {
     @Test
     void isValidDateInvalid() {
         assertFalse(dataValidator.isValidDate(""));
+        assertFalse(dataValidator.isValidDate(null));
+        assertFalse(dataValidator.isValidDate(""));
     }
 
     @Test
@@ -39,6 +41,8 @@ class DataValidatorTest {
     @Test
     void isValidHourInvalid() {
         assertFalse(dataValidator.isValidHour("19H00"));
+        assertFalse(dataValidator.isValidHour(null));
+        assertFalse(dataValidator.isValidHour("Hola"));
     }
     @Test
     public void testFormatPlate() {
@@ -66,7 +70,7 @@ class DataValidatorTest {
     }
     @Test
     void getDay() throws ParseException {
-        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("mm-dd-yyyy");
         Date sampleDate = DATE_FORMAT.parse("11-18-2023");
         int numberDay = dataValidator.getDay(sampleDate);
 
