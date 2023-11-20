@@ -27,11 +27,11 @@ class PredictorTest {
 
     @Test
     void isRestrictedDay_NoRestricted() {
-        // Lets say a license plate with 6 as its last digit, and thursday, number 4 of the week
         int digitPlate = 6;
         int day = 4;
         assertFalse(predictor.isRestrictedDay(digitPlate, day));
     }
+
     @Test
     void isRestrictedHour_Restricted() throws ParseException {
         // Hour limits of interval one
@@ -46,6 +46,7 @@ class PredictorTest {
         assertTrue(predictor.isRestrictedHour(hour_lim_inf2));
         assertTrue(predictor.isRestrictedHour(hour_lim_sup2));
     }
+
     @Test
     void isRestrictedHour_NoRestricted() throws ParseException {
         // Hour limits of interval one

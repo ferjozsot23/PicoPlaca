@@ -4,7 +4,6 @@ import org.fernandosoto.presentation.View;
 import org.fernandosoto.utilitary.Util;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Predictor {
@@ -20,7 +19,6 @@ public class Predictor {
         digitPlate = cleaner.digitPlate;
         numberDay = cleaner.numberDay;
         hour = cleaner.formatedHour;
-
         calculateRestrictedRoad();
     }
 

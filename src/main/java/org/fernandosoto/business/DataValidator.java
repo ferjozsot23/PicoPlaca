@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 
 import org.fernandosoto.utilitary.Util;
 
-
 // This class validate the user data
 public class DataValidator {
     public int digitPlate;
@@ -31,7 +30,6 @@ public class DataValidator {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     private boolean isValidData(String userPlate, String userDate, String userHour) {
@@ -48,22 +46,17 @@ public class DataValidator {
         return true;
     }
 
-    // Validate user date
     public boolean isValidDate(String userDate) throws ParseException {
         if (userDate == null) return false;
         Util.DATE_FORMAT.parse(userDate);
         return true;
-
     }
 
-    // Validate user plate
     public boolean isValidPlate(String userPlate) {
         if (userPlate == null) return false;
         String pattern = "^[A-Z]{3}-[0-9]{3,4}$";
-
         Pattern regex = Pattern.compile(pattern);
         Matcher matcher = regex.matcher(userPlate);
-
         return matcher.matches();
     }
 

@@ -17,20 +17,17 @@ public class View {
         String userDate;
         String userHour;
         do {
-            userPlate = readString("Enter the licence plate (ex: PBU-1234): ");
-            userDate = readString("Enter the date (ex: 11-18-2023): ");
-            userHour = readString("Enter the time: (19:00): ");
+            userPlate = readUserData("Enter the licence plate (ex: PBU-1234): ");
+            userDate = readUserData("Enter the date (ex: 11-18-2023): ");
+            userHour = readUserData("Enter the time: (19:00): ");
 
         } while (!cleaner.clean(userPlate, userDate, userHour));
-        
-        // Send cleaned data to Predictor class
         sendCleanedData(cleaner);
     }
 
     private void sendCleanedData(DataValidator cleaner) {
         predictor.getCleanedData(cleaner);
     }
-
 
     public void printResult(boolean isRestrictRoad) {
         if (isRestrictRoad) {
@@ -39,9 +36,8 @@ public class View {
             System.out.println("Allowed to Road :)!");
         }
     }
-    
-    // Function for read user input
-    private String readString(String message){
+
+    private String readUserData(String message){
         System.out.print(message);
         return scanner.next();
     }

@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -54,20 +53,16 @@ class DataValidatorTest {
     public void testFormatPlate() {
         String testPlate = "ABC-1234";
         dataValidator.formatPlate(testPlate);
-
         assertEquals(4, dataValidator.digitPlate);
     }
-
 
     @Test
     void formatDate() throws ParseException {
         DataValidator dataValidator = new DataValidator();
         String testDate = "10-30-2023";
         dataValidator.formatDate(testDate);
-
         assertEquals(1, dataValidator.numberDay);
     }
-
 
     @Test
     void formatDateInvalid() throws ParseException {
@@ -75,14 +70,12 @@ class DataValidatorTest {
         ParseException exception = null;
         dataValidator.formatDate(testDate);
         assertNotNull(exception);
-
     }
 
     @Test
     void getDay() throws ParseException {
         Date sampleDate = Util.DATE_FORMAT.parse("11-18-2023");
         int numberDay = dataValidator.getDay(sampleDate);
-
         assertEquals(6, numberDay);
     }
 
@@ -90,9 +83,7 @@ class DataValidatorTest {
     void formatHour() throws ParseException {
         String hour = "15:30";
         Date testHour = Util.HOUR_FORMAT.parse(hour);
-
         dataValidator.formatHour(hour);
-
         assertEquals(testHour, dataValidator.formatedHour);
     }
 
@@ -103,6 +94,4 @@ class DataValidatorTest {
         dataValidator.formatHour(invalidHour);
         assertNotNull(exception);
     }
-
-
 }
