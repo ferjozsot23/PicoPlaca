@@ -63,9 +63,9 @@ class DataValidatorTest {
     void formatDate() throws ParseException {
         DataValidator dataValidator = new DataValidator();
         String testDate = "10-30-2023";
-        int dayNumber = dataValidator.formatDate(testDate);
+        dataValidator.formatDate(testDate);
 
-        assertEquals(1, dayNumber);
+        assertEquals(1, dataValidator.numberDay);
     }
 
 
